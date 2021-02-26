@@ -9,7 +9,7 @@ import {
   initializeUser,
 } from "../models/database";
 
-export function initializeDatabase(): void {
+export async function initializeDatabase(): Promise<void> {
   try {
     initializeChat(database);
     initializeMessage(database);
@@ -32,19 +32,25 @@ export function initializeDatabase(): void {
     Chat.belongsToMany(User, { through: ChatMembers });
     User.belongsToMany(Chat, { through: ChatMembers });
 
-    Promise.all([
+    await Promise.all([
       // Basic Tables (have to be created bevore you can have Foreign Keys from this Tables)
-      User.sync({ alter: true }).then(() => console.log("User table created")),
-      Chat.sync({ alter: true }).then(() => console.log("Chat table created")),
-    ]).then(() => {
+      User.sync(/*{ alter: true }*/).then(() =>
+        console.log("User table created")
+      ),
+      Chat.sync(/*{ alter: true }*/).then(() =>
+        console.log("Chat table created")
+      ),
+    ]);
+
+    await Promise.all([
       // Tables with Foreign Key Constrains to Tables bevore
-      ChatMembers.sync({ alter: true }).then(() =>
+      ChatMembers.sync(/*{ alter: true }*/).then(() =>
         console.log("ChatMembers table created")
-      );
-      Message.sync({ alter: true }).then(() =>
+      ),
+      Message.sync(/*{ alter: true }*/).then(() =>
         console.log("Message table created")
-      );
-    });
+      ),
+    ]);
   } catch (error) {
     console.error(error);
   }

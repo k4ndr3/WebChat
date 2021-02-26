@@ -11,12 +11,17 @@
     "sourceMap": true,
     "baseUrl": "./",
     "types": ["node"],
+    // "typeRoots": ["src/@types/*"],
     "pretty": true
   },
+  // "typeAcquisition": {
+  //   "enable": true,
+  //   "include": ["src/@types/**/*.d.ts"]
+  // },
   "ts-node": {
     "files": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"],
-  "files": ["src/costom.d.ts"]
+  "exclude": ["node_modules"]
+  // "files": ["src/@types/**/*.d.ts"]
 }
