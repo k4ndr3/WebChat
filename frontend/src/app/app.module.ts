@@ -50,6 +50,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { AboutComponent } from './sites/about/about.component';
+import { MychatsComponent } from './sites/mychats/mychats.component';
+import { ChatDialogComponent } from './sites/chat-dialog/chat-dialog.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
     IndexComponent,
     HeaderComponent,
     FooterComponent,
+    AboutComponent,
+    MychatsComponent,
+    ChatDialogComponent,
   ],
   imports: [
     BrowserModule,

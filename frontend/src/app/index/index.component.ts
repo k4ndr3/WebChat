@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
+  welcome:string = "Welcome to my:chats";
+
   constructor() { }
 
   ngOnInit(): void {
