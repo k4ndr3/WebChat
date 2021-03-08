@@ -27,9 +27,9 @@ export async function initializeDatabase(): Promise<void> {
     User.hasMany(Message);
 
     Message.belongsTo(Chat);
-    Chat.hasMany(Message);
+    Chat.hasMany(Message, { as: "messages" });
 
-    Chat.belongsToMany(User, { through: ChatMembers });
+    Chat.belongsToMany(User, { through: ChatMembers, as: "users" });
     User.belongsToMany(Chat, { through: ChatMembers });
 
     await Promise.all([

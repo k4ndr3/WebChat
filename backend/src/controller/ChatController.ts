@@ -34,10 +34,14 @@ export class ChatController {
     const chatId = Number(req.params.id);
 
     if (await req.user?.hasChat(chatId)) {
-      Chat.findByPk<Chat>(chatId)
-        .then((node: Chat | null) => {
-          if (node) {
-            res.json(node);
+      Chat.findByPk<Chat>(chatId, {
+        include: [Chat.associations.users, Chat.associations.messages], // [Chat.associations.message, Chat.associations.users],
+      })
+        .then((chat) => {
+          console.log(chat);
+
+          if (chat) {
+            res.json(chat);
           } else {
             res.status(404).json({ errors: ["ChatModel not found"] });
           }

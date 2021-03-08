@@ -42,11 +42,11 @@ export class Chat
   public createMessage!: HasManyCreateAssociationMixin<Message>;
 
   public readonly users?: User[];
-  public readonly message?: Message[];
+  public readonly messages?: Message[];
 
   public static associations: {
     users: Association<Chat, User>;
-    message: Association<Chat, Message>;
+    messages: Association<Chat, Message>;
   };
 }
 

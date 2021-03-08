@@ -78,42 +78,6 @@ export class ChatWebSocketServer extends MessageServer<Message<MessageNames>> {
     console.error(message, new Error().stack);
   }
 
-  // private handleLogin(
-  //   sender: ws_WebSocket,
-  //   message: Message<MessageNames.Login>
-  // ): void {
-  //   User.findOne({
-  //     where: {
-  //       username: message.payload.username,
-  //       password: message.payload.password,
-  //     },
-  //   })
-  //     .then((user) => {
-  //       if (user) {
-  //         this.replyTo(sender, <Message<MessageNames.Connected>>{
-  //           type: MessageNames.Connected,
-  //           payload: "Connection established",
-  //         });
-  //       } else
-  //         this.replyTo(sender, <Message<MessageNames.NotLoggedIn>>{
-  //           type: MessageNames.NotLoggedIn,
-  //           payload: {
-  //             title: "Login Failure",
-  //             message: "Username or Password are Incorrect",
-  //           },
-  //         });
-  //     })
-  //     .catch(() => {
-  //       this.replyTo(sender, <Message<MessageNames.NotLoggedIn>>{
-  //         type: MessageNames.NotLoggedIn,
-  //         payload: {
-  //           title: "Login Failure",
-  //           message: "Username or Password are Incorrect",
-  //         },
-  //       });
-  //     });
-  // }
-
   async handleChatMessage(
     sender: ws_WebSocket,
     message: Message<MessageNames.Message>
