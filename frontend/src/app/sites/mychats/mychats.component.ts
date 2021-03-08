@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Messages } from '../../shared/models/messages.data'
+import { DataserviceService } from '../../shared/services/dataservice.service'
 
 @Component({
   selector: 'app-mychats',
@@ -8,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
 export class MychatsComponent implements OnInit {
 
   welcome:string = "Welcome to my:chats";
+  messages:Messages[]=[];
+  idUser:number
 
-  constructor() { }
+  constructor(private dataService: DataserviceService) { }
 
   ngOnInit(): void {
+    this.messages=[{user:'Paul', message:'hello', time:'14:30'},{user:'Paul', message:'how are you', time:'14:35'}]
+  }
+
+  async getMessages() {
+    // this.messages = await (await this.dataService.getMessagesFromUser(this.idUser));
   }
 
 }

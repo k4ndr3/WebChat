@@ -1,0 +1,31 @@
+<div class="body">
+  <table>
+    <tr>
+      <td>
+        <mat-card class="incomming">
+          <p *ngFor="let message of messages; let i = index">
+            {{ message.user }} - {{ message.time }}: {{ message.message }}
+          </p>
+        </mat-card>
+      </td>
+      <td>
+        <mat-card class="outgoing">
+          <mat-form-field class="formField">
+            <input
+              matInput
+              type="text"
+              placeholder="your message"
+              formControlName="messageInput"
+            />
+          </mat-form-field>
+        </mat-card>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button mat-flat-button color="primary" class="btnSend">send</button>
+      </td>
+    </tr>
+  </table>
+</div>
