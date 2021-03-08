@@ -24,7 +24,14 @@
     <tr>
       <td></td>
       <td>
-        <button mat-flat-button color="primary" class="btnSend">send</button>
+        <button
+          mat-flat-button
+          color="primary"
+          class="btnSend"
+          (click)="sendMessage()"
+        >
+          send
+        </button>
       </td>
     </tr>
   </table>

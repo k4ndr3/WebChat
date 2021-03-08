@@ -53,6 +53,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { AboutComponent } from './sites/about/about.component';
 import { MychatsComponent } from './sites/mychats/mychats.component';
 import { ChatDialogComponent } from './sites/chat-dialog/chat-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -112,6 +115,10 @@ import { ChatDialogComponent } from './sites/chat-dialog/chat-dialog.component';
     OverlayModule,
     PortalModule,
     ScrollingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

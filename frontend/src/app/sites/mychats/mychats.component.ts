@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Messages } from '../../shared/models/messages.data'
 import { DataserviceService } from '../../shared/services/dataservice.service'
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-mychats',
@@ -9,9 +10,15 @@ import { DataserviceService } from '../../shared/services/dataservice.service'
 })
 export class MychatsComponent implements OnInit {
 
+  outGoing = new FormGroup({
+     outGoingMessage : new FormControl(''),
+  })
+ 
+
   welcome:string = "Welcome to my:chats";
   messages:Messages[]=[];
   idUser:number
+  myUserId: number;
 
   constructor(private dataService: DataserviceService) { }
 
@@ -20,7 +27,12 @@ export class MychatsComponent implements OnInit {
   }
 
   async getMessages() {
-    // this.messages = await (await this.dataService.getMessagesFromUser(this.idUser));
+    await this.dataService.getMessagesFromUser(this.idUser).subscribe(res => {
+      this.messages = res;
+    });
   }
 
+  sendMessage() {
+    // return this.dataService.sendMessage(this.myUserId, this.messages);
+  }
 }

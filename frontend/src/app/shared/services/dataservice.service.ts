@@ -12,16 +12,16 @@ export class DataserviceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getMessagesFromUser(idUser: number): Promise<Messages> {
-    return this.httpClient.get<Messages>(
+  public getMessagesFromUser(idUser: number): Observable<Messages[]> {
+    return this.httpClient.get<Messages[]>(
       this.REST_API_URL + idUser
-    ).toPromise();
+    );
   }
   
-  public getAllMessages(): Promise<Messages> {
-    return this.httpClient.get<Messages>(
+  public getAllMessages(): Observable<Messages[]> {
+    return this.httpClient.get<Messages[]>(
       this.REST_API_URL
-    ).toPromise();
+    );
   }
 
   public async createChat(idUser: number) {
